@@ -1,0 +1,43 @@
+.product__container {
+  width: 80%;
+  margin: 60px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.product__container > div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.product-name label {
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.product-name input[type="file"] {
+  width: 100%;
+  color: var(--secondary-color);
+}
+
+.product__container button {
+  width: 100%;
+  margin: 20px 0;
+  border: none;
+  margin: none;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-radius: 5px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 8px 20px;
+}
+
+.product__container button:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  outline: 1px solid var(--secondary-color);
+}

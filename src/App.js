@@ -6,6 +6,7 @@ import Home from './pages/Home/Home';
 import Product from './pages/Product/Product';
 import Reviews from './pages/Reviews/Reviews';
 import Login from './pages/Login/Login';
+// import PrivateRoute from './components/PrivateRoute';
 
 function App() {
   return (
