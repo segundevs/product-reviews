@@ -1,10 +1,11 @@
 import {useState} from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/authContext/AuthContext';
+import './signup.css';
 
-const Login = () => {
+const SignUp = () => {
 
-  const { login } = useAuth();
+   const { signUp } = useAuth();
 
   const history = useHistory();
 
@@ -13,12 +14,12 @@ const Login = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    await login(email, password)
-    history.push('/')
+    await signUp(email, password)
+    history.push('/login')
   }
   return (
     <form onSubmit={handleSubmit} className="product__container">
-      <h2 className="heading">Login</h2>
+      <h2 className="heading">Create an account</h2>
       <div className="product-name">
         <label>Email</label>
         <input type="text" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)}/>
@@ -29,10 +30,9 @@ const Login = () => {
         <input type="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)}/>
       </div>
 
-       <h2 className="heading">Don't have an account? <Link to="/signup">Sign up</Link></h2>
-      <button >Login</button>
+      <button >Sign Up</button>
     </form>
   )
 }
 
-export default Login
+export default SignUp

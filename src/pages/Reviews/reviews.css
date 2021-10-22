@@ -1,0 +1,9 @@
+.review-btn {
+  width: 200px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}

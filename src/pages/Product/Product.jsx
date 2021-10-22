@@ -7,9 +7,6 @@ const db = firebase.firestore().collection('products');
 
 const Product = () => {
 
-
-  
-
   const [productName, setProductName] = useState('');
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState(null);
@@ -31,8 +28,7 @@ const Product = () => {
       reviews: [{
         username: 'bash-bash',
         review: review
-      }],
-      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      }]
     }
 
   const handleSubmit = (e) => {

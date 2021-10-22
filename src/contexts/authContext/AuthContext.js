@@ -81,7 +81,7 @@ const sendPasswordResetEmail = (email) => {
   }
 
   return (
-  <AuthContext.Provider value={{values}}>
+  <AuthContext.Provider value={values}>
     {!isAuthenticating && children}
   </AuthContext.Provider>
   )
