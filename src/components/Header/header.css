@@ -2,7 +2,7 @@
   position: fixed;
   background-color: var(--primary-color);
   color: var(--secondary-color);
-  z-index: 999;
+  z-index: 200;
   top: 0;
   left: 0;
   right: 0;
@@ -23,7 +23,7 @@
 
 .nav__links-mobile {
   display: flex;
-  width: 50vw;
+  width: 100vw;
   background-color: var(--secondary-color);
   color: var(--primary-color);
   flex-direction: column;
@@ -33,9 +33,6 @@
   top: 0;
   right: 0;
   bottom: 0;
-  /* border-left: 2px solid var(--secondary-color);
-    border-top: 1px solid var(--secondary-color);
-    border-top-left-radius: 5px; */
 }
 
 .nav__link {
@@ -45,28 +42,23 @@
   font-size: 1.2rem;
 }
 
-.nav__link:hover:not(:last-child) {
-  transform: scale(1.3);
-}
-
 .menu__icon {
   cursor: pointer;
 }
 
 .login {
-  background-color: var(--primary-color);
-  color: var(--secondary-color);
-  width: 100%;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
+  width: 50%;
+  margin: 50px auto 0 auto;
   text-align: center;
   padding: 10px 20px;
-  border-radius: 5px 0 0 5px;
   font-size: 1.2rem;
 }
 
 .login:hover {
-  background-color: var(--secondary-color);
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
 }
 
 .logo-link {

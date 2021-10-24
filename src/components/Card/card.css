@@ -1,21 +1,16 @@
 .card__container {
-  position: relative;
   display: flex;
   justify-content: space-between;
   height: 150px;
   width: 100%;
-  margin: 40px 0;
-  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
-    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  margin: 20px 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   border-radius: 5px;
 }
 
 .image__container {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 38%;
-  height: 170px;
+  height: 100%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-color: var(--primary-color);
@@ -23,21 +18,54 @@
 
 .product__image {
   border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
 .card__text {
-  position: absolute;
-  top: 0;
-  right: 0;
+  position: relative;
   width: 60%;
+  margin: 5px 5px 5px 10px;
+}
+
+.card__text .name {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.card__text .description {
+  margin-bottom: 5px;
+  line-height: 20px;
+  font-size: 15px;
+}
+
+.card__text .reviews {
+  text-decoration: none;
+  position: absolute;
+  bottom: 2px;
+  left: 2px;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 0 5px;
+  color: var(--secondary-color);
+  background-color: rgb(241, 168, 160);
 }
 
 @media only screen and (min-width: 768px) {
   .card__container {
     width: 45%;
+    height: 180px;
+  }
+
+  .image__container {
+    width: 35%;
+    height: 100%;
+  }
+
+  .card__text {
+    width: 63%;
   }
 }

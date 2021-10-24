@@ -6,28 +6,40 @@ import Home from './pages/Home/Home';
 import Product from './pages/Product/Product';
 import Reviews from './pages/Reviews/Reviews';
 import Login from './pages/Login/Login';
-// import PrivateRoute from './components/PrivateRoute';
+import SignUp from './pages/SignUp/SignUp';
+import PrivateRoute from './components/PrivateRoute';
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
+
+
+
+
+
 
 function App() {
-  return (
+  return ( 
    <Router >
       <Header />
       <Switch>
           <Route exact path="/">
             <Home />
           </Route>
-          <Route path="/product">
+          <PrivateRoute path="/product">
             <Product />
-          </Route>
+          </PrivateRoute>
           <Route path="/reviews/:id">
             <Reviews />
+          </Route>
+          <Route path="/signup">
+            <SignUp />
           </Route>
           <Route path="/login">
             <Login />
           </Route>
+          <Route path="/forgotPassword">
+            <ForgotPassword />
+          </Route>
       </Switch>
-
-    </Router>
+    </Router> 
   );
 }
 

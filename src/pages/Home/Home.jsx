@@ -46,9 +46,7 @@ const Home = () => {
         <div className="products__results">
           {console.log(products)}
         {products && products.map((prod => (
-          
           <Card prod={prod} key={prod.name}/>
-          
         )))}
         </div>
     </div>

@@ -22,12 +22,12 @@ const SignUp = () => {
       <h2 className="heading">Create an account</h2>
       <div className="product-name">
         <label>Email</label>
-        <input type="text" placeholder="Enter your email" value={email} onChange={(e) => setEmail(e.target.value)}/>
+        <input type="text" placeholder="Enter your email" required value={email} onChange={(e) => setEmail(e.target.value)}/>
       </div>
 
       <div className="product-name">
         <label>Password</label>
-        <input type="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+        <input type="password" placeholder="Enter your password" required value={password} onChange={(e) => setPassword(e.target.value)}/>
       </div>
 
       <button >Sign Up</button>

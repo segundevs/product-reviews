@@ -50,15 +50,16 @@ const sendPasswordResetEmail = (email) => {
         return true;
       });
   };
+  
 
-  const confirmPasswordReset = (code, password) => {
-    return firebase
-      .auth()
-      .confirmPasswordReset(code, password)
-      .then(() => {
-        return true;
-      });
-  };
+  // const confirmPasswordReset = (code, password) => {
+  //   return firebase
+  //     .auth()
+  //     .confirmPasswordReset(code, password)
+  //     .then(() => {
+  //       return true;
+  //     });
+  // };
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
@@ -76,8 +77,7 @@ const sendPasswordResetEmail = (email) => {
     signUp,
     login,
     logOut,
-    sendPasswordResetEmail,
-    confirmPasswordReset
+    sendPasswordResetEmail
   }
 
   return (

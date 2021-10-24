@@ -44,7 +44,7 @@ const Reviews = () => {
   return (
     <div className="container">
       <div className="product__container">
-
+      {console.log(product)}
       </div>
       <div className="reviews__container">
         {product && product.map(prod => (
@@ -58,7 +58,7 @@ const Reviews = () => {
       </div>
       {user && 
       <form onSubmit={handleSubmit} className="review__form">
-        <textarea cols="30" rows="10" placeholder="Please submit your review" value={rev} onChange={(e) => setRev(e.target.value)}></textarea>
+        <textarea cols="10" rows="10" placeholder="Please submit your review" value={rev} onChange={(e) => setRev(e.target.value)}></textarea>
         <button type="submit" className="review-btn">Submit review</button>
       </form>}
     </div>

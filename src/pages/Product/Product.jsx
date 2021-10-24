@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import firebase from '../../firebase';
 import {v4 as uuidv4} from 'uuid';
+import {Button} from '@material-ui/core';
 import './product.css';
 
 const db = firebase.firestore().collection('products');
@@ -52,7 +53,7 @@ const Product = () => {
 
       <div className="product-name">
         <label>Product Description</label>
-        <textarea cols="30" rows="10" value={description} onChange={(e) => setDescription(e.target.value)}/>
+        <textarea cols="10" rows="10" value={description} onChange={(e) => setDescription(e.target.value)}/>
       </div>
 
       <div className="product-name">
@@ -65,7 +66,7 @@ const Product = () => {
         <input type="text" value={review} onChange={(e) => setReview(e.target.value)}/>
       </div>
 
-      <button >submit</button>
+      <Button variant="contained" color="primary" fullWidth>submit</Button>
     </form>
   )
 }
