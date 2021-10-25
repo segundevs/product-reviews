@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { useAuth } from '../../contexts/authContext/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 import { FcGoogle } from 'react-icons/fc';
 import { toast } from 'react-toastify';
 import Loader from '../../components/Loader';
@@ -67,7 +67,7 @@ const Login = () => {
         </h4>
        <h4>Don't have an account? <Link to="/signup" className="login__page-link">Sign up</Link></h4>
        <h4>Forgotten Password? <Link to="/forgotPassword" className="login__page-link">Forgot password</Link></h4>
-      <button className="btn">{loading ? <Loader height='1em'/> : 'Login'}</button>
+      <button className="btn">{loading ? <Loader /> : 'Login'}</button>
     </form>
   )
 }
