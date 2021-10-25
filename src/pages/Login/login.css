@@ -1,0 +1,11 @@
+.product__container h4 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1rem;
+}
+
+.login__page-link {
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--tertiary-color);
+}
