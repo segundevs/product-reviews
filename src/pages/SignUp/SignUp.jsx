@@ -1,35 +1,23 @@
 import {useState} from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { toast } from 'react-toastify';
 import Loader from '../../components/Loader';
 import './signup.css';
 
 const SignUp = () => {
 
-   const { signUp } = useAuth();
+   const { signUp, loading } = useAuth();
 
   const history = useHistory();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-      setLoading(true)
-      try{
-        await signUp(email, password, username)
-        setLoading(false)
-        toast.success('Successfully created account!', {theme: "colored", autoClose: 2000 })
-        history.push('/login')
-      }catch (err){
-        setError(err.message)
-        setLoading(false)
-        toast.error( error? `${error}` : 'Something went wrong!', {theme: "colored", autoClose: 2000 })
-      }   
+      await signUp(email, password, username)
+      history.push('/login')  
   }
 
   return (

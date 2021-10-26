@@ -2,50 +2,28 @@ import {useState} from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { FcGoogle } from 'react-icons/fc';
-import { toast } from 'react-toastify';
 import Loader from '../../components/Loader';
 
 import './login.css'
 
 const Login = () => {
 
-  const { login, signInWithGoogle } = useAuth();
+  const { login, signInWithGoogle, loading } = useAuth();
 
   const history = useHistory();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('')
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    setLoading(true)
-    try {
       await login(email, password)
-      setLoading(false)
-      toast.success('Successfully logged in!', {theme: "colored", autoClose: 2000 })
       history.push('/')
-    } catch (err) {
-      setError(err.message)
-      setLoading(false)
-      toast.error( error? `${error}` : 'Something went wrong!', {theme: "colored", autoClose: 2000 })
-    }  
   }
 
   const handleGoogle = async() => {
-
-    setLoading(true)
-    try{
       await signInWithGoogle()
-      setLoading(false)
-      toast.success('Successfully logged in!', {theme: "colored", autoClose: 2000 })
       history.push('/')
-    }catch (err){
-      setError(err.message)
-      setLoading(false)
-      toast.error( error? `${error}` : 'Something went wrong!', {theme: "colored", autoClose: 2000 })
-    } 
   }
 
   return (

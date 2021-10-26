@@ -1,29 +1,17 @@
 import {useState} from 'react';
 import { useAuth } from '../../contexts/AuthContext';
-import { toast } from 'react-toastify';
 import Loader from '../../components/Loader';
 
 
 const ForgotPassword = () => {
 
-  const { sendPasswordResetEmail } = useAuth();
+  const { sendPasswordResetEmail, loading } = useAuth();
 
   const [email, setEmail] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-      setLoading(true)
-      try{
-        await sendPasswordResetEmail(email)
-        setLoading(false)
-        toast.success('Please check your email to reset your password', {theme: "colored", autoClose: 2000 })
-      }catch(err){
-        setError(err.message)
-        setLoading(false)
-        toast.error( error? `${error}` : 'Something went wrong!', {theme: "colored", autoClose: 2000 })
-      }
+    await sendPasswordResetEmail(email)
   }
 
   return (
