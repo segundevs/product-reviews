@@ -1,10 +1,13 @@
+import './home.css';
 import { useState, useEffect } from 'react';
 import firebase from '../../firebase';
+
+//Components
 import Card from '../../components/Card/Card';
-import './home.css';
+import Loader from '../../components/Loader';
 
-
-  const db = firebase.firestore().collection('products');
+//Firestore database
+const db = firebase.firestore().collection('products');
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
@@ -12,10 +15,13 @@ const Home = () => {
   const [error, setError] = useState('');
 
   useEffect(()=>{
+    //Get all products from firestore
     const getProducts = () => {
      try {
        setLoading(true);
-    db.onSnapshot(querySnapShot => {
+    db
+    .orderBy('createdAt', 'desc')
+    .onSnapshot(querySnapShot => {
       const items = [];
       querySnapShot.forEach(doc => {
         items.push(doc.data())
@@ -28,8 +34,9 @@ const Home = () => {
       setLoading(false)
      }  
   }
-
+  
   getProducts()
+
   },[])
 
   const [value, setValue] = useState('');
@@ -39,15 +46,15 @@ const Home = () => {
   }
 
   return (
-    <div className="home__container container">
+    <div className="container">
       <h2 className="heading">Your favorite website for products reviews</h2>
       <input type="text" placeholder="Search your favorite products..." value={value} onChange={handleChange} className="search__input"/>
-
         <div className="products__results">
-          {console.log(products)}
-        {products && products.map((prod => (
-          <Card prod={prod} key={prod.name}/>
-        )))}
+          {loading && <Loader/>}
+          {error && <h5>Something went wrong</h5>}
+          {products && products.map((prod => (
+            <Card prod={prod} key={prod.name} />
+          )))}
         </div>
     </div>
   )

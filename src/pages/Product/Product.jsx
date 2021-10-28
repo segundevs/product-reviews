@@ -18,7 +18,7 @@ const Product = () => {
   const [imageUrl, setImageUrl] = useState(null);
   const [review, setReview] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
 
   const handleFileChange = async(e) => {
     const file = e.target.files[0];
@@ -31,6 +31,7 @@ const Product = () => {
 
   const prod = {
       id: uuidv4(),
+      username: user.displayName ? user.displayName : 'unknown',
       owner: user? user.uid : 'unknown',
       ownerEmail: user? user.email : 'unknown',
       name: productName,
@@ -53,7 +54,7 @@ const Product = () => {
       toast.success('Product uploaded!', {theme: "colored", autoClose: 2000 })
       setProductName('')
       setDescription('')
-      setImageUrl('')
+      setImageUrl(null)
       setReview('')
     } catch(err) {
       setError(err.message)

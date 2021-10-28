@@ -1,15 +1,14 @@
-import {useState} from 'react';
-import { useHistory } from 'react-router-dom';
-import { useAuth } from '../../contexts/AuthContext';
-import Loader from '../../components/Loader';
 import './signup.css';
+import {useState} from 'react';
+import { useAuth } from '../../contexts/AuthContext';
+
+//Components
+import Loader from '../../components/Loader';
+import ErrorDiv from '../../components/ErrorDiv';
 
 const SignUp = () => {
 
-   const { signUp, loading } = useAuth();
-
-  const history = useHistory();
-
+  const { signUp, loading, error } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
@@ -17,13 +16,12 @@ const SignUp = () => {
   const handleSubmit = async(e) => {
     e.preventDefault()
       await signUp(email, password, username)
-      history.push('/login')  
   }
 
   return (
     <form onSubmit={handleSubmit} className="product__container">
       <h2 className="heading">Create an account</h2>
-
+      {error && <ErrorDiv component={error}/>}
       <div className="input__container">
         <label>Username</label>
         <input type="text" placeholder="Enter your username" value={username} onChange={(e) => setUsername(e.target.value)}/>
