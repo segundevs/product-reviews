@@ -18,7 +18,7 @@ const AuthProvider = ({children}) => {
 
   const signUp = (email, password, name) => {
     setLoading(false)
-    try {
+    // try {
       return firebase
     .auth()
     .createUserWithEmailAndPassword(email, password)
@@ -29,34 +29,50 @@ const AuthProvider = ({children}) => {
       displayName: name
      })
       setLoading(false)
+      window.location.replace('/login')
       toast.success('Successfully created account!', {theme: "colored", autoClose: 2000 })
       return response.user
     })
-    } catch (err) {
-      setError(err.message)
+    .catch(err => {
+      if(err.message === 'Firebase: Password should be at least 6 characters (auth/weak-password).'){
+        setError('Password should be at least 6 characters')
+      }
+     else if(err.message === 'Firebase: The email address is already in use by another account. (auth/email-already-in-use).'){
+        setError('The email address is already in use by another account')
+      } 
+      else {
+        setError('There was a network error')
+      }
       setLoading(false)
-      toast.error( error? `${error}` : 'Something went wrong!', {theme: "colored", autoClose: 2000 })
-    }  
+    }) 
   };
 
 const login = (email, password) => {
   setLoading(true)
-  try {
+  
     return firebase
   .auth()
   .signInWithEmailAndPassword(email, password)
   .then(response => {
     setUser(response.user)
     setLoading(false)
+    window.location.replace('/')
     toast.success('Successfully signed in', {theme: "colored", autoClose: 2000 })
     return response.user
   })
-  } catch (err) {
-    setError(err.message)
-    setLoading(false)
-    toast.error( error ? `${error}` : 'Something went wrong!', {theme: "colored", autoClose: 2000 })
-  }
-  
+  .catch(err => {
+    if(err.message === 'Firebase: The password is invalid or the user does not have a password. (auth/wrong-password).'){
+      setError('The password is invalid or the user does not have a password')
+    }
+    else if (err.message === 'Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).'){
+      setError('There is no user with this email address or the user may have been deleted')
+    }
+    else {
+      setError(err.message)
+    }
+     setLoading(false)
+     
+  })
 }
 
 const logOut = () => {
@@ -70,7 +86,6 @@ const logOut = () => {
 
 const sendPasswordResetEmail = (email) => {
   setLoading(true)
-  try {
     return firebase
       .auth()
       .sendPasswordResetEmail(email)
@@ -78,33 +93,30 @@ const sendPasswordResetEmail = (email) => {
         setLoading(false)
         toast.success('Please check your email to reset your password', {theme: "colored", autoClose: 2000 })
         return true;
-      });
-    }catch (err) {
-      setError(err.message)
-      setLoading(false)
-      toast.error( error? `${error}` : 'Something went wrong!', {theme: "colored", autoClose: 2000 })
-    }   
+      }).catch(err => {
+        setError(err.message)
+        setLoading(false)
+        toast.error( error? `${error}` : 'Something went wrong!', {theme: "colored", autoClose: 2000 })
+      })
   };
   
 
   const signInWithGoogle = () => {
     setLoading(true)
-    try {
       return firebase
     .auth()
     .signInWithPopup(new firebase.auth.GoogleAuthProvider())
     .then(response => {
       setUser(response.user)
       setLoading(false)
+      window.location.replace('/')
       toast.success('Successfully signed in!', {theme: "colored", autoClose: 2000 })
       return response.user
-    });    
-    } catch (err) {
-      setError(err.message)
-      setLoading(false)
-      toast.error( error? `${error}` : 'Something went wrong!', {theme: "colored", autoClose: 2000 })
-    }
-    
+    }).catch(err => {
+        setError(err.message)
+        setLoading(false)
+        toast.error( error? `${error}` : 'Something went wrong!', {theme: "colored", autoClose: 2000 })
+    })   
   };
 
   useEffect(() => {
@@ -120,6 +132,7 @@ const sendPasswordResetEmail = (email) => {
   const values = {
     loading,
     user,
+    error,
     isAuthenticating,
     signUp,
     login,
