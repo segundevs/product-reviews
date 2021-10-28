@@ -1,40 +1,66 @@
 import {useState} from 'react';
 import firebase from '../../firebase';
 import {v4 as uuidv4} from 'uuid';
-import {Button} from '@material-ui/core';
+import { useAuth } from '../../contexts/AuthContext';
+import { toast } from 'react-toastify';
+import Loader from '../../components/Loader';
+
 import './product.css';
 
 const db = firebase.firestore().collection('products');
 
 const Product = () => {
 
+  const {user} = useAuth();
+
   const [productName, setProductName] = useState('');
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState(null);
   const [review, setReview] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('')
 
   const handleFileChange = async(e) => {
     const file = e.target.files[0];
     const storageRef = firebase.storage().ref();
     const fileRef = storageRef.child(file.name);
     await fileRef.put(file);
-    setImageUrl(await fileRef.getDownloadURL());
+    const url = await fileRef.getDownloadURL();
+    setImageUrl(url);
   }
 
   const prod = {
       id: uuidv4(),
+      owner: user? user.uid : 'unknown',
+      ownerEmail: user? user.email : 'unknown',
       name: productName,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       description: description,
       imageUrl: imageUrl,
       reviews: [{
-        username: 'bash-bash',
+        owner: user? user.uid : 'unknown',
+        username: user.displayName? user.displayName : 'Anonymous',
         review: review
       }]
     }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault()
-    uploadProduct(prod)
+    setLoading(true)
+    try{
+      await uploadProduct(prod)
+      setLoading(false)
+      toast.success('Product uploaded!', {theme: "colored", autoClose: 2000 })
+      setProductName('')
+      setDescription('')
+      setImageUrl('')
+      setReview('')
+    } catch(err) {
+      setError(err.message)
+      setLoading(false)
+      toast.error( error? `${error}` : 'Something went wrong!', {theme: "colored", autoClose: 2000 })
+    }
+    
   }
 
   function uploadProduct(product){
@@ -46,27 +72,28 @@ const Product = () => {
   return (
     <form onSubmit={handleSubmit} className="product__container">
       <h2 className="heading">Upload a product for review</h2>
-      <div className="product-name">
+
+      <div className="input__container">
         <label>Product Name</label>
-        <input type="text" value={productName} onChange={(e) => setProductName(e.target.value)}/>
+        <input type="text" value={productName} onChange={(e) => setProductName(e.target.value)} required/>
       </div>
 
-      <div className="product-name">
+      <div className="input__container">
         <label>Product Description</label>
-        <textarea cols="10" rows="10" value={description} onChange={(e) => setDescription(e.target.value)}/>
+        <textarea cols="10" rows="10" value={description} onChange={(e) => setDescription(e.target.value)} required/>
       </div>
 
-      <div className="product-name">
+      <div className="input__container">
         <label>Product Image</label>
-        <input type="file"  onChange={handleFileChange}/>
+        <input type="file"  onChange={handleFileChange} />
       </div>
 
-      <div className="product-name">
+      <div className="input__container">
         <label>Product Review</label>
-        <input type="text" value={review} onChange={(e) => setReview(e.target.value)}/>
+        <input type="text" value={review} onChange={(e) => setReview(e.target.value)} required />
       </div>
 
-      <Button variant="contained" color="primary" fullWidth>submit</Button>
+      <button className="btn">{loading ? <Loader height='1em'/> : 'Upload'}</button>
     </form>
   )
 }

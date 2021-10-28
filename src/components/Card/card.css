@@ -1,7 +1,7 @@
 .card__container {
   display: flex;
   justify-content: space-between;
-  height: 150px;
+  height: 160px;
   width: 100%;
   margin: 20px 0;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
@@ -31,41 +31,101 @@
 }
 
 .card__text .name {
-  font-size: 1rem;
-  margin-bottom: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 5px;
 }
 
 .card__text .description {
   margin-bottom: 5px;
-  line-height: 20px;
-  font-size: 15px;
+  line-height: 18px;
+  font-size: 14px;
 }
 
-.card__text .reviews {
+.desktop {
+  display: none;
+}
+
+.card__text-details .reviews {
   text-decoration: none;
   position: absolute;
   bottom: 2px;
   left: 2px;
   font-size: 14px;
   font-weight: 700;
-  padding: 2px 5px;
+  padding: 3px 5px;
   border-radius: 0 5px;
   color: var(--secondary-color);
-  background-color: rgb(241, 168, 160);
+  background-color: rgb(233, 186, 180);
+}
+
+.del-btn {
+  position: absolute;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  color: red;
+  padding: 2px;
+  border-radius: 60%;
+  bottom: 2px;
+  right: 2px;
+}
+
+.del-btn:hover {
+  color: var(--secondary-color);
+}
+
+.card__text-sub-details {
+  position: absolute;
+  bottom: 30px;
+  margin-left: 2px;
+}
+
+.card__text-sub-details h5 {
+  margin-top: 5px;
 }
 
 @media only screen and (min-width: 768px) {
   .card__container {
     width: 45%;
-    height: 180px;
+    height: 190px;
   }
 
   .image__container {
-    width: 35%;
+    width: 45%;
     height: 100%;
   }
 
   .card__text {
-    width: 63%;
+    width: 53%;
+  }
+
+  .card__text .reviews {
+    position: absolute;
+    bottom: 4px;
+    left: 4px;
+    padding: 5px 10px;
+    border-radius: 0 5px;
+  }
+
+  .card__text-sub-details {
+    position: absolute;
+    bottom: 40px;
+  }
+
+  .card__text .name {
+    font-size: 1rem;
+  }
+
+  .card__text .description {
+    font-size: 16px;
+  }
+
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
   }
 }

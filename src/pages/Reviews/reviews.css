@@ -1,9 +1,50 @@
+.reviews__container {
+  margin: 40px 0;
+}
+
 .review-btn {
-  width: 200px;
+  width: 140px;
+  margin-top: 20px;
   background-color: var(--secondary-color);
   color: var(--primary-color);
   border: none;
   outline: none;
   padding: 10px 20px;
+  border-radius: 5px;
   cursor: pointer;
 }
+
+.review-btn:hover {
+  background-color: var(--hover-color);
+  color: var(--light-color);
+}
+
+/* .delete-btn {
+  background-color: var(--light-color);
+  border: none;
+  outline: none;
+  padding: 3px 6px;
+  margin-left: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.delete-icon {
+  color: red;
+  font-size: 1.2rem;
+}
+
+.delete-icon:hover {
+  color: var(--secondary-color);
+} */
+
+/* .user-review {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-right: 20px;
+} */

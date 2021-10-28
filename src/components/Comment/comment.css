@@ -1,0 +1,30 @@
+.user-review {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.delete-btn {
+  background-color: var(--light-color);
+  align-self: flex-end;
+  border: none;
+  outline: none;
+  padding: 3px 6px;
+  margin-left: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.delete-icon {
+  color: red;
+  font-size: 1.2rem;
+}
+
+.delete-icon:hover {
+  color: var(--secondary-color);
+}
