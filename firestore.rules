@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /products/{itemId} {
+      allow read: if true;
+
+     allow create: if isOwner(request.resource.data) &&
+        isSignedIn();
+
+      allow update: if isSignedIn();
+
+      allow delete: if isOwner(resource.data) &&
+        isSignedIn();
+
+
+      // FUNCTIONS
+      function isSignedIn() {
+        return request.auth != null;
+      }
+  
+      function isOwner(prod) {
+        return request.auth.uid == prod.owner;
+      }
+    }
+  }
+}

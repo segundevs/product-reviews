@@ -11,11 +11,8 @@ import PrivateRoute from './components/PrivateRoute';
 import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
 
 
-
-
-
-
 function App() {
+
   return ( 
    <Router >
       <Header />
@@ -23,7 +20,7 @@ function App() {
           <Route exact path="/">
             <Home />
           </Route>
-          <PrivateRoute path="/product">
+          <PrivateRoute path="/product" >
             <Product />
           </PrivateRoute>
           <Route path="/reviews/:id">

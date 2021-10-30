@@ -36,6 +36,13 @@ body {
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
+.input__container input:focus,
+.input__container textarea:focus,
+.review__form textarea:focus,
+.search__input:focus {
+  border: 1px solid rgb(117, 116, 116);
+}
+
 .input__container input,
 .search__input {
   height: 40px;
@@ -92,6 +99,27 @@ label {
   font-weight: 400;
 }
 
+.error-div {
+  padding: 5px 10px;
+  width: 90%;
+  margin: 0 auto 30px auto;
+  border: 1px solid red;
+  background-color: rgb(221, 126, 126, 0.1);
+  color: red;
+}
+
+.error-div p {
+  font-size: 14px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.page-loader {
+  width: 100px;
+  height: 100px;
+  margin: 150px auto;
+}
+
 @media only screen and (min-width: 768px) {
   .container {
     width: 80%;
@@ -103,5 +131,15 @@ label {
     margin: 60px auto 20px auto;
     display: flex;
     flex-direction: column;
+  }
+
+  .error-div {
+    width: 70%;
+  }
+
+  .page-loader {
+    width: 100px;
+    height: 100px;
+    margin: 200px auto;
   }
 }
