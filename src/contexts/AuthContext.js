@@ -44,6 +44,9 @@ const AuthProvider = ({children}) => {
         setError('There was a network error')
       }
       setLoading(false)
+      setTimeout(() => {
+            setError(false)
+          }, 2000)
     }) 
   };
 
@@ -71,7 +74,9 @@ const login = (email, password) => {
       setError(err.message)
     }
      setLoading(false)
-     
+    setTimeout(() => {
+            setError(false)
+          }, 2000) 
   })
 }
 
@@ -94,9 +99,16 @@ const sendPasswordResetEmail = (email) => {
         toast.success('Please check your email to reset your password', {theme: "colored", autoClose: 2000 })
         return true;
       }).catch(err => {
-        setError(err.message)
+        if(err.message === 'Firebase: There is no user record corresponding to this identifier. The user may have been deleted. (auth/user-not-found).'){
+          setError('There is no user with this email address or the user may have been deleted')
+        }
+        else {
+          setError(err.message)
+        } 
         setLoading(false)
-        toast.error( error? `${error}` : 'Something went wrong!', {theme: "colored", autoClose: 2000 })
+        setTimeout(() => {
+            setError(false)
+          }, 2000)
       })
   };
   
