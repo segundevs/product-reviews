@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import firebase from '../../firebase';
 import {v4 as uuidv4} from 'uuid';
 import { useAuth } from '../../contexts/AuthContext';
@@ -10,7 +11,7 @@ import './product.css';
 const db = firebase.firestore().collection('products');
 
 const Product = () => {
-
+  const history = useHistory();
   const {user} = useAuth();
 
   const [productName, setProductName] = useState('');
@@ -56,6 +57,7 @@ const Product = () => {
       setDescription('')
       setImageUrl(null)
       setReview('')
+      history.push('/');
     } catch(err) {
       setError(err.message)
       setLoading(false)

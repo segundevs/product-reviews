@@ -4,7 +4,7 @@ import firebase from '../../firebase';
 
 //Components
 import Card from '../../components/Card/Card';
-import Loader from '../../components/Loader';
+import PageLoader from '../../components/PageLoader';
 
 //Firestore database
 const db = firebase.firestore().collection('products');
@@ -50,7 +50,7 @@ const Home = () => {
       <h2 className="heading">Your favorite website for products reviews</h2>
       <input type="text" placeholder="Search your favorite products..." value={value} onChange={handleChange} className="search__input"/>
         <div className="products__results">
-          {loading && <Loader/>}
+          {loading && <PageLoader/>}
           {error && <h5>Something went wrong</h5>}
           {products && products.map((prod => (
             <Card prod={prod} key={prod.name} />
