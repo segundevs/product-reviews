@@ -14,7 +14,7 @@
   align-self: flex-end;
   border: none;
   outline: none;
-  padding: 3px 6px;
+  padding: 2px 5px;
   margin-left: 20px;
   border-radius: 50%;
   cursor: pointer;
@@ -22,7 +22,7 @@
 
 .delete-icon {
   color: red;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
 }
 
 .delete-icon:hover {

@@ -2,7 +2,7 @@ import {useState} from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import {CgMenuRight, CgClose} from 'react-icons/cg';
 import './header.css';
-import { useAuth } from '../../contexts/authContext/AuthContext';
+import { useAuth } from '../../contexts/AuthContext';
 
 
 const Header = () => {
@@ -29,7 +29,9 @@ const Header = () => {
         <div className="nav__links">
           <Link to="/" className="nav__link">Home</Link>
           <Link to="/product" className="nav__link">Product</Link>
-          <Link to="/login" className="nav__link login">Login</Link>
+          {!user && <Link to="/login" className="nav__link login">Login</Link>}
+          {!user && <Link to="/signup" className="nav__link login">Sign up</Link>}
+          {user && <Link to="/" className="nav__link login" onClick={handleLogout}>Logout</Link>}
         </div>
 
         <div className="menu__icon" onClick={() => setIsOpen(prev => !prev)}>

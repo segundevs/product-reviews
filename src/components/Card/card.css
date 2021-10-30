@@ -37,8 +37,10 @@
 }
 
 .card__text .description {
-  margin-bottom: 5px;
-  line-height: 18px;
+  margin: 8px 0;
+  line-height: 22px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
   font-size: 14px;
 }
 
