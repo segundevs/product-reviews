@@ -118,6 +118,7 @@ label {
   width: 100px;
   height: 100px;
   margin: 150px auto;
+  padding-left: 10%;
 }
 
 @media only screen and (min-width: 768px) {

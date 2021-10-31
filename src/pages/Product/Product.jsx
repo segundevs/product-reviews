@@ -33,14 +33,14 @@ const Product = () => {
   const prod = {
       id: uuidv4(),
       username: user.displayName ? user.displayName : 'Anonymous',
-      owner: user? user.uid : 'unknown',
+      owner: user? user.uid : 'Anonymous',
       ownerEmail: user? user.email : 'Anonymous',
       name: productName,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       description: description,
       imageUrl: imageUrl,
       reviews: [{
-        owner: user? user.uid : 'unknown',
+        owner: user? user.uid : 'Anonymous',
         username: user.displayName? user.displayName : 'Anonymous',
         review: review
       }]
