@@ -90,11 +90,11 @@ const Reviews = () => {
           ))
         ))}
       </div>
-      {user && 
+      {user ? 
       <form onSubmit={handleSubmit} className="review__form">
         <textarea cols="10" rows="10" placeholder="Please submit your review" required value={rev} onChange={(e) => setRev(e.target.value)}></textarea>
         <button type="submit" className="review-btn">{loading ? <Loader /> : 'Submit review'}</button>
-      </form>}
+      </form> : <div className="login-msg">Please login to submit a review</div>}
     </div>
   )
 }

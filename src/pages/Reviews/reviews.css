@@ -19,32 +19,8 @@
   color: var(--light-color);
 }
 
-/* .delete-btn {
-  background-color: var(--light-color);
-  border: none;
-  outline: none;
-  padding: 3px 6px;
-  margin-left: 20px;
-  border-radius: 50%;
-  cursor: pointer;
+.login-msg {
+  text-align: center;
+  font-weight: 800;
+  color: var(--tertiary-color);
 }
-
-.delete-icon {
-  color: red;
-  font-size: 1.2rem;
-}
-
-.delete-icon:hover {
-  color: var(--secondary-color);
-} */
-
-/* .user-review {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.avatar {
-  border-radius: 50%;
-  margin-right: 20px;
-} */
