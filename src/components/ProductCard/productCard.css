@@ -15,7 +15,9 @@
 }
 
 .product__review-number {
-  background-color: rgb(233, 186, 180);
+  /* background-color: rgb(233, 186, 180); */
+  background-color: var(--btn-bg);
+  color: var(--white);
   padding: 5px;
   width: 150px;
   border-radius: 5px;

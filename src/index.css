@@ -8,15 +8,18 @@
 
 :root {
   --primary-color: #fafafa;
+  --bg-color: #f7f8fd;
   --secondary-color: #112d4e;
   --hover-color: #13375f;
   --tertiary-color: #3f72af;
   --light-color: #dbe2ef;
+  --white: #ffffff;
+  --btn-bg: #ae1feb;
 }
 
 body {
   font-family: "Lato", sans-serif;
-  background-color: var(--primary-color);
+  background-color: var(--bg-color);
   color: var(--secondary-color);
   width: 100%;
   font-size: 16px;

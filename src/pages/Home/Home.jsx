@@ -48,7 +48,7 @@ const Home = () => {
   return (
     <div className="container">
       <h2 className="heading">Your favorite website for products reviews</h2>
-      <input type="text" placeholder="Search your favorite products..." value={value} onChange={handleChange} className="search__input"/>
+      {/* <input type="text" placeholder="Search your favorite products..." value={value} onChange={handleChange} className="search__input"/> */}
         <div className="products__results">
           {loading && <PageLoader/>}
           {error && <h5>Something went wrong</h5>}

@@ -48,8 +48,8 @@ const Card = ({prod}) => {
         <div className="card__text-details">
           <h4 className="name">{prod.name}</h4>
 
-          <p className="description mobile">{`${prod.description.substring(0, 50)}...`}</p>
-          <p className="description desktop">{`${prod.description.substring(0, 80)}...`}</p>
+          <p className="description mobile">{`${prod.description.substring(0, 40)}...`}</p>
+          <p className="description desktop">{`${prod.description.substring(0, 60)}...`}</p>
 
             <Link to={`/reviews/${prod.id}`} className="reviews">
               {prod.reviews.length} {`${prod.reviews.length <= 1 ? 'review' : 'reviews'}`}

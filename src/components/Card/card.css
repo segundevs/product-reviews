@@ -4,9 +4,8 @@
   height: 160px;
   width: 100%;
   margin: 20px 0;
-  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
-    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
-    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  background-color: var(--white);
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 5px;
 }
 
@@ -15,7 +14,6 @@
   height: 100%;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
-  background-color: var(--primary-color);
 }
 
 .product__image {
@@ -30,6 +28,7 @@
   position: relative;
   width: 60%;
   margin: 5px 5px 5px 10px;
+  padding-top: 5px;
 }
 
 .card__text .name {
@@ -57,12 +56,20 @@
   position: absolute;
   bottom: 2px;
   left: 2px;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 400;
   padding: 3px 5px;
   border-radius: 0 5px;
-  color: var(--secondary-color);
-  background-color: rgb(233, 186, 180);
+  background-color: var(--btn-bg);
+  color: var(--white);
+  /* color: var(--secondary-color);
+  background-color: rgb(233, 186, 180); */
+}
+
+.card__text-details .reviews:hover {
+  background-color: var(--white);
+  color: var(--btn-bg);
+  outline: 1px solid var(--btn-bg);
 }
 
 .del-btn {
@@ -135,3 +142,11 @@
     display: none;
   }
 }
+
+/* @media only screen and (min-width: 0) {
+  .card__container {
+    width: 48%;
+    height: 220px;
+    border: 1px solid red;
+  }
+} */
