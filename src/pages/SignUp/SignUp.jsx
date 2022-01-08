@@ -7,7 +7,7 @@ import ErrorDiv from '../../components/ErrorDiv';
 
 const SignUp = () => {
 
-  const { signUp, loading, error } = useAuth();
+  const { signUp, logOut, loading, error } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
@@ -15,6 +15,7 @@ const SignUp = () => {
   const handleSubmit = async(e) => {
     e.preventDefault()
       await signUp(email, password, username)
+      logOut()
       setEmail('')
       setPassword('')
       setUsername('')

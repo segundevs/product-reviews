@@ -17,8 +17,8 @@ const Home = () => {
   useEffect(()=>{
     //Get all products from firestore
     const getProducts = () => {
+      setLoading(true);
      try {
-       setLoading(true);
     db
     .orderBy('createdAt', 'desc')
     .onSnapshot(querySnapShot => {
