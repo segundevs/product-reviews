@@ -41,18 +41,16 @@ const Home = () => {
 
   const [value, setValue] = useState('');
 
-  const handleChange = (e) => {
-    setValue(e.target.value)
-  }
+  const filtered = !value ? products : products?.filter((product) => product?.name?.toLowerCase().includes(value.toLowerCase()));
 
   return (
     <div className="container">
       <h2 className="heading">Your favorite website for products reviews</h2>
-      {/* <input type="text" placeholder="Search your favorite products..." value={value} onChange={handleChange} className="search__input"/> */}
+      <input type="text" placeholder="Search your favorite products..." value={value} onChange={(e) => setValue(e.target.value)} className="search__input"/>
         <div className="products__results">
           {loading && <PageLoader/>}
           {error && <h5>Something went wrong</h5>}
-          {products && products.map((prod => (
+          {filtered && filtered.map((prod => (
             <Card prod={prod} key={prod.name} />
           )))}
         </div>
